@@ -1,13 +1,10 @@
 import random
-
 from flask import Flask
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
-
 def ping():
-
     def generar_numero_aleatorio():
         return random.randint(1, 100)  # Genera un número aleatorio entre 1 y 100
 
@@ -27,4 +24,7 @@ def ping():
             break
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4000, debutg=True)
+    app.run(host='0.0.0.0', port=4000, debug=True)
+
+# Mantener la ventana abierta hasta que el usuario presione Enter
+input("Presiona Enter para salir...")
