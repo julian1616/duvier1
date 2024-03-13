@@ -13,7 +13,7 @@ while True:
     if intento < numero_aleatorio:
         print("Muy bajo. sapo perra.")
     elif intento > numero_aleatorio:
-        print("Muy alto. Intenta de nuevo.")
+        print("Muy alto. Intenta de cualquier mierda.")
     else:
         print(f"¡Correcto! ¡Has adivinado el número en {intentos} intentos!")
         break
