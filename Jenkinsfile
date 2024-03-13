@@ -34,5 +34,12 @@ pipeline {
                 }
             }
         }
+        
+        stage('Ejecutar script Python en Visual Studio Code') {
+            steps {
+                // Ejecutar el script Python desde Visual Studio Code
+                echo "0ok"
+            }
+        }
     }
 }
