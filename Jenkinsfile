@@ -1,17 +1,13 @@
 pipeline {
     agent any
     
-    environment {
-        GIT_REPO_URL = 'https://github.com/julian1616/duvier1.git'
-    }
-    
     stages {
         stage('Leer archivo Python') {
             steps {
-                // Clonar el repositorio utilizando las credenciales
+                // Clonar el repositorio utilizando el token de acceso personal
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'duvier0', usernameVariable: 'julian1616', passwordVariable: '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')]) {
-                        sh "git clone ${env.GIT_REPO_URL}"
+                    withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
+                        sh "git clone https://$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@github.com/julian1616/duvier1.git"
                     }
                 }
 
