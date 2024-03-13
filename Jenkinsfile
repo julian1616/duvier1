@@ -35,10 +35,10 @@ pipeline {
             }
         }
         
-        stage('Verificar Python') {
+        stage('Ejecutar script Python en Visual Studio Code') {
             steps {
-                // Ejecutar un comando de Python para imprimir la versión
-                sh "python --version"
+                // Ejecutar el script Python desde Visual Studio Code
+                sh "code /ruta/a/tu/script.py" // Reemplaza /ruta/a/tu/script.py con la ruta de tu script
             }
         }
     }
