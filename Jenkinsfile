@@ -43,11 +43,11 @@ pipeline {
             }
         }
         
-        stage('Ejecutar aplicación después del commit') {
+        stage('Abrir en el navegador') {
             steps {
                 script {
-                    // Ejecutar el script después del commit
-                    sh "python importrandom.py"
+                    // Abre la aplicación Flask en el navegador
+                    sh "xdg-open http://localhost:4000"
                 }
             }
         }
