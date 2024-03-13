@@ -34,7 +34,5 @@ pipeline {
                 }
             }
         }
-        
-        // La etapa 'Ejecutar script Python en Visual Studio Code' ha sido eliminada
     }
 }
