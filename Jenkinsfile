@@ -2,6 +2,12 @@ pipeline {
     agent any
     
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
         stage('Verificar opciones de conexión') {
             steps {
                 script {
@@ -28,5 +34,15 @@ pipeline {
                 }
             }
         }
+        
+        stage('Pruebas de cambios') {
+            steps {
+                // Aquí puedes agregar comandos para ejecutar pruebas automatizadas
+                // Podrías utilizar herramientas como JUnit para pruebas de Java, pytest para pruebas de Python, etc.
+                // Ejemplo:
+                sh "python tests.py"
+            }
+        }
     }
 }
+
