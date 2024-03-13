@@ -42,5 +42,12 @@ pipeline {
                 }
             }
         }
+
+                stage('Confirmación de ejecución al azar') {
+            steps {
+                // Ejecutar una ejecución al azar, por ejemplo, impresión
+                echo "Ok"
+            }
+        }
     }
 }
