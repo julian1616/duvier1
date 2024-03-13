@@ -35,11 +35,6 @@ pipeline {
             }
         }
         
-        stage('Ejecutar script Python en Visual Studio Code') {
-            steps {
-                // Ejecutar el script Python desde Visual Studio Code
-                sh "code /ruta/a/tu/script.py" // Reemplaza /ruta/a/tu/script.py con la ruta de tu script
-            }
-        }
+        // La etapa 'Ejecutar script Python en Visual Studio Code' ha sido eliminada
     }
 }
