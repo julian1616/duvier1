@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    environment {
+        PYTHON_PATH = '/usr/bin/python3'
+    }
+    
     stages {
         stage('Verificar opciones de conexión') {
             steps {
@@ -11,7 +15,6 @@ pipeline {
                         echo "Opción 1: Conexión directa al servidor: Correcta"
                     } catch (Exception e) {
                         echo "Opción 1: Conexión directa al servidor: Fallida"
-                        echo "aun pendiente de confirmacion"
                     }
 
                     // Intento 2: Conexión utilizando HTTPS
@@ -42,31 +45,12 @@ pipeline {
             }
         }
         
-        stage('Verificar Python') {
-            steps {
-                script {
-                    def pythonPath = sh(script: 'which python3', returnStdout: true).trim()
-                    if (pythonPath) {
-                        echo "Python está instalado en: ${pythonPath}"
-                        // Guardar la ubicación de Python en una variable global
-                        env.PYTHON_PATH = pythonPath
-                    } else {
-                        error "Python no está instalado en el sistema"
-                    }
-                }
-            }
-        }
-        
         stage('Leer archivo Python') {
             steps {
                 // Ejecutar un comando de Python para leer el archivo
                 script {
-                    if (env.PYTHON_PATH) {
-                        def salidaPython = sh(script: '${env.PYTHON_PATH} duvier1/tu_script.py', returnStdout: true).trim()
-                        echo "El resultado de Python es: ${salidaPython}"
-                    } else {
-                        error "No se encontró la ubicación de Python; La verificación de Python debe realizarse primero."
-                    }
+                    def salidaPython = sh(script: "${env.PYTHON_PATH} duvier1/tu_script.py", returnStdout: true).trim()
+                    echo "El resultado de Python es: ${salidaPython}"
                 }
             }
         }
