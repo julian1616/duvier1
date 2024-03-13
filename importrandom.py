@@ -1,30 +1,53 @@
-import random
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Verificar opciones de conexión') {
+            steps {
+                script {
+                    try {
+                        sh "ping -c 1 github.com"
+                        echo "Opción 1: Conexión directa al servidor: Correcta"
+                    } catch (Exception e) {
+                        echo "Opción 1: Conexión directa al servidor: Fallida"
+                    }
 
-from flask import Flask
+                    try {
+                        sh "git ls-remote https://github.com/julian1616/duvier1.git"
+                        echo "Opción 2: Conexión utilizando HTTPS: Correcta"
+                    } catch (Exception e) {
+                        echo "Opción 2: Conexión utilizando HTTPS: Fallida"
+                    }
 
-app = Flask(__name__)
-
-@app.route('/', methods=['GET'])
-
-def ping():
-
-    def generar_numero_aleatorio():
-        return random.randint(1, 100)  # Genera un número aleatorio entre 1 y 100
-
-    # Ejemplo de uso
-    numero_aleatorio = generar_numero_aleatorio()
-    print("Adivina el número entre 1 y 100.")
-    intentos = 0
-    while True:
-        intento = int(input("Introduce tu conjetura: "))
-        intentos += 1
-        if intento < numero_aleatorio:
-            print("Muy bajo. sapo perra.")
-        elif intento > numero_aleatorio:
-            print("Muy alto. Intenta de duvier toro")
-        else:
-            print(f"¡Correcto! ¡Has adivinado el número en {intentos} intentos!")
-            break
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4000, debutg=True)
+                    try {
+                        sh "git ls-remote git@github.com:julian1616/duvier1.git"
+                        echo "Opción 3: Conexión utilizando SSH: Correcta"
+                    } catch (Exception e) {
+                        echo "Opción 3: Conexión utilizando SSH: Fallida"
+                    }
+                }
+            }
+        }
+        
+        stage('Ejecutar aplicación Flask') {
+            steps {
+                script {
+                    sh "python importrandom.py &"
+                }
+            }
+        }
+        
+        stage('Confirmación de ejecución al azar') {
+            steps {
+                // Ejecutar una ejecución al azar, por ejemplo, impresión
+                echo "Ok"
+            }
+        }
+    }
+}
