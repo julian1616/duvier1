@@ -35,6 +35,25 @@ pipeline {
             }
         }
         
+        stage('Clonar o confirmar existencia del repositorio') {
+            steps {
+                script {
+                    def repositoryName = "duvier10"
+                    def repositoryURL = "https://github.com/tu-usuario/${repositoryName}.git"
+
+                    // Verificar si el repositorio ya está clonado
+                    if (fileExists(repositoryName)) {
+                        echo "El repositorio ${repositoryName} ya está clonado"
+                    } else {
+                        // Si el repositorio no está clonado, clonarlo
+                        echo "Clonando el repositorio ${repositoryName}..."
+                        sh "git clone ${repositoryURL}"
+                        echo "El repositorio ${repositoryName} se ha clonado exitosamente"
+                    }
+                }
+            }
+        }
+        
         stage('Confirmación de ejecución al azar') {
             steps {
                 // Ejecutar una ejecución al azar, por ejemplo, imprimir "ok"
@@ -42,4 +61,8 @@ pipeline {
             }
         }
     }
+}
+
+def fileExists(fileName) {
+    return fileExists("${fileName}/.git")
 }
