@@ -4,11 +4,9 @@ pipeline {
     stages {
         stage('Leer archivo Python') {
             steps {
-                // Clonar el repositorio utilizando el token de acceso personal
+                // Clonar el repositorio utilizando HTTPS (solo para repositorios públicos)
                 script {
-                    withCredentials([string(credentialsId: 'github-token', variable: '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')]) {
-                        sh "git clone https://$GITHUB_TOKEN@github.com/julian1616/duvier1.git"
-                    }
+                    sh "git clone https://github.com/julian1616/duvier1.git"
                 }
 
                 // Ejecutar un comando de Python para leer el archivo
