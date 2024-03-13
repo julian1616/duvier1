@@ -42,14 +42,5 @@ pipeline {
                 }
             }
         }
-        
-        stage('Abrir en el navegador') {
-            steps {
-                script {
-                    // Abre la aplicación Flask en el navegador
-                    sh "xdg-open http://localhost:4000"
-                }
-            }
-        }
     }
 }
