@@ -11,7 +11,7 @@ while True:
     intento = int(input("Introduce tu conjetura: "))
     intentos += 1
     if intento < numero_aleatorio:
-        print("Muy bajo. Intenta de nuevo.")
+        print("Muy bajo. sapo perro.")
     elif intento > numero_aleatorio:
         print("Muy alto. Intenta de nuevo.")
     else:
