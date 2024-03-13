@@ -35,10 +35,10 @@ pipeline {
             }
         }
         
-        stage('Ejecutar script Python en Visual Studio Code') {
+        stage('confirmacion de ejecucion al azar') {
             steps {
-                // Ejecutar el script Python desde Visual Studio Code
-                echo "0ok"
+                // Ejecutar una ejecucion al azar ejemplo impresion
+                echo "ok"
             }
         }
     }
