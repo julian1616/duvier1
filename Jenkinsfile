@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage('Verificar opciones de conexión') {
+        stage('Verificar opciones de conexión cambio') {
             steps {
                 script {
                     // Intento 1: Conexión directa al servidor
