@@ -3,9 +3,25 @@ pipeline {
     
     environment {
         PYTHON_PATH = '/usr/bin/python3'
+        REPO_PATH = '/ruta/a/duvier'
     }
     
     stages {
+        stage('Verificar Python') {
+            steps {
+                script {
+                    def pythonPath = sh(script: 'which python3', returnStdout: true).trim()
+                    if (pythonPath) {
+                        echo "Python está instalado en: ${pythonPath}"
+                        // Guardar la ubicación de Python en una variable global
+                        env.PYTHON_PATH = pythonPath
+                    } else {
+                        error "Python no está instalado en el sistema"
+                    }
+                }
+            }
+        }
+        
         stage('Verificar opciones de conexión') {
             steps {
                 script {
@@ -40,7 +56,7 @@ pipeline {
             steps {
                 // Actualizar el repositorio existente
                 script {
-                    sh "cd duvier1 && git pull"
+                    sh "cd ${env.REPO_PATH} && git pull"
                 }
             }
         }
@@ -49,10 +65,11 @@ pipeline {
             steps {
                 // Ejecutar un comando de Python para leer el archivo
                 script {
-                    def salidaPython = sh(script: "${env.PYTHON_PATH} duvier1/tu_script.py", returnStdout: true).trim()
+                    def salidaPython = sh(script: "${env.PYTHON_PATH} ${env.REPO_PATH}/tu_script.py", returnStdout: true).trim()
                     echo "El resultado de Python es: ${salidaPython}"
                 }
             }
         }
     }
 }
+
