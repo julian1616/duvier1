@@ -61,10 +61,9 @@ pipeline {
             }
         }
         
-        stage('Leer archivo Python') {
+        stage('Ejecutar script Python') {
             steps {
-                // Ejecutar un comando de Python para leer el archivo;
-                // aunque no ha funcionado correctamente
+                // Ejecutar el script de Python
                 script {
                     def salidaPython = sh(script: "${env.PYTHON_PATH} ${env.REPO_PATH}/tu_script.py", returnStdout: true).trim()
                     echo "El resultado de Python es: ${salidaPython}"
@@ -73,3 +72,4 @@ pipeline {
         }
     }
 }
+
