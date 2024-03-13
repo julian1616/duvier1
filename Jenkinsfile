@@ -35,10 +35,18 @@ pipeline {
             }
         }
         
-        stage('confirmacion de ejecucion al azar') {
+        stage('Ejecutar aplicación Flask') {
             steps {
-                // Ejecutar una ejecucion al azar ejemplo impresion
-                echo "ok"
+                script {
+                    sh "python importrandom.py &"
+                }
+            }
+        }
+        
+        stage('Confirmación de ejecución al azar') {
+            steps {
+                // Ejecutar una ejecución al azar, por ejemplo, impresión
+                echo "Ok"
             }
         }
     }
