@@ -6,8 +6,8 @@ pipeline {
             steps {
                 // Clonar el repositorio utilizando el token de acceso personal
                 script {
-                    withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
-                        sh "git clone https://$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@github.com/julian1616/duvier1.git"
+                    withCredentials([string(credentialsId: 'github-token', variable: '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')]) {
+                        sh "git clone https://$GITHUB_TOKEN@github.com/julian1616/duvier1.git"
                     }
                 }
 
