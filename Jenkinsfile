@@ -2,26 +2,10 @@ pipeline {
     agent any
     
     environment {
-        PYTHON_PATH = '/usr/bin/python3'
         REPO_PATH = '/ruta/a/duvier' // Aquí debes colocar la ruta correcta donde se encuentra tu repositorio
     }
     
     stages {
-        stage('Verificar Python') {
-            steps {
-                script {
-                    def pythonPath = sh(script: 'which python3', returnStdout: true).trim()
-                    if (pythonPath) {
-                        echo "Python está instalado en: ${pythonPath}"
-                        // Guardar la ubicación de Python en una variable global
-                        env.PYTHON_PATH = pythonPath
-                    } else {
-                        error "Python no está instalado en el sistema"
-                    }
-                }
-            }
-        }
-        
         stage('Verificar opciones de conexión') {
             steps {
                 script {
@@ -65,7 +49,7 @@ pipeline {
             steps {
                 // Ejecutar el script de Python
                 script {
-                    def salidaPython = sh(script: "${env.PYTHON_PATH} ${env.REPO_PATH}/tu_script.py", returnStdout: true).trim()
+                    def salidaPython = sh(script: "python3 ${env.REPO_PATH}/tu_script.py", returnStdout: true).trim()
                     echo "El resultado de Python es: ${salidaPython}"
                 }
             }
