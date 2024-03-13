@@ -42,5 +42,20 @@ pipeline {
                 }
             }
         }
+        
+        stage('Enviar mensaje de texto') {
+            steps {
+                script {
+                    def accountSid = 'tu_account_sid'
+                    def authToken = 'tu_auth_token'
+                    def toNumber = '+573192246527'  // Reemplaza con tu número de teléfono
+                    def fromNumber = '+1234567890'  // Reemplaza con tu número de teléfono Twilio
+
+                    def twilio = new com.twilio.Twilio(accountSid, authToken)
+                    def message = twilio.message(toNumber, fromNumber, 'La aplicación Flask se ejecutó correctamente en Jenkins.')
+                    echo "Mensaje de texto enviado con éxito a ${toNumber}"
+                }
+            }
+        }
     }
 }
