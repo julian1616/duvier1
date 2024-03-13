@@ -35,9 +35,9 @@ pipeline {
             }
         }
         
-        stage('confirmacion de ejecucion al azar') {
+        stage('Confirmación de ejecución al azar') {
             steps {
-                // Ejecutar una ejecucion al azar ejemplo impresion
+                // Ejecutar una ejecución al azar, por ejemplo, imprimir "ok"
                 echo "ok"
             }
         }
