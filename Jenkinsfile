@@ -7,21 +7,6 @@ pipeline {
     }
     
     stages {
-        stage('Verificar Python') {
-            steps {
-                script {
-                    def pythonPath = sh(script: 'which python3', returnStdout: true).trim()
-                    if (pythonPath) {
-                        echo "Python está instalado en: ${pythonPath}"
-                        // Guardar la ubicación de Python en una variable global
-                        env.PYTHON_PATH = pythonPath
-                    } else {
-                        error "Python no está instalado en el sistema"
-                    }
-                }
-            }
-        }
-        
         stage('Verificar opciones de conexión') {
             steps {
                 script {
