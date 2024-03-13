@@ -42,5 +42,14 @@ pipeline {
                 }
             }
         }
+        
+        stage('Ejecutar aplicación después del commit') {
+            steps {
+                script {
+                    // Ejecutar el script después del commit
+                    sh "python importrandom.py"
+                }
+            }
+        }
     }
 }
