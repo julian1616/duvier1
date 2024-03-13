@@ -41,6 +41,7 @@ pipeline {
                 // Podrías utilizar herramientas como JUnit para pruebas de Java, pytest para pruebas de Python, etc.
                 // Ejemplo:
                 sh "python tests.py"
+                //al terminar la actividad
             }
         }
     }
