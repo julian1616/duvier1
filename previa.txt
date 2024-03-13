@@ -35,10 +35,10 @@ pipeline {
             }
         }
         
-        stage('Pruebas de cambios') {
+        stage('confirmacion de ejecucion al azar') {
             steps {
-                // Ejecutar pruebas de cambios
-                sh "python C:\\Users\\Sneyder\\Desktop\\duvier\\tests.py"
+                // Ejecutar una ejecucion al azar ejemplo impresion
+                echo "ok"
             }
         }
     }
