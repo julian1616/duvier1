@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage('Verificar opciones de conexión cambio') {
+        stage('Verificar opciones de conexión') {
             steps {
                 script {
                     // Intento 1: Conexión directa al servidor
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 // Ejecutar un comando de Python para leer el archivo
                 script {
-                    def salidaPython = sh(script: 'python duvier1/tu_script.py', returnStdout: true).trim()
+                    def salidaPython = sh(script: 'python3 duvier1/tu_script.py', returnStdout: true).trim()
                     echo "El resultado de Python es: ${salidaPython}"
                 }
             }
