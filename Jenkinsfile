@@ -37,8 +37,8 @@ pipeline {
         
         stage('Pruebas de cambios') {
             steps {
-                // Ejecutar pruebas de cambios
-                sh "python C:\\Users\\Sneyder\\Desktop\\duvier\\tests.py"
+                // Ejecutar el script importrandom.py
+                sh "python C:\\Users\\Sneyder\\Desktop\\duvier\\importrandom.py"
             }
         }
     }
