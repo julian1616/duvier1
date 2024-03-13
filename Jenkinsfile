@@ -2,6 +2,19 @@ pipeline {
     agent any
     
     stages {
+        stage('Verificar Python') {
+            steps {
+                script {
+                    def pythonPath = sh(script: 'which python3', returnStdout: true).trim()
+                    if (pythonPath) {
+                        echo "Python está instalado en: ${pythonPath}"
+                    } else {
+                        error "Python no está instalado en el sistema"
+                    }
+                }
+            }
+        }
+        
         stage('Verificar opciones de conexión') {
             steps {
                 script {
