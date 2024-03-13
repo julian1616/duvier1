@@ -35,10 +35,10 @@ pipeline {
             }
         }
         
-        stage('Pruebas de cambios') {
+        stage('Verificar Python') {
             steps {
-                // Ejecutar el script importrandom.py
-                sh "python C:\\Users\\Sneyder\\Desktop\\duvier\\importrandom.py"
+                // Ejecutar un comando de Python para imprimir la versión
+                sh "python --version"
             }
         }
     }
