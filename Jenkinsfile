@@ -13,7 +13,7 @@ pipeline {
                 script {
                     try {
                         sh "ping -c 1 github.com"
-                        echo "Opción 1: Conexión directa al servidor: Correcta"
+                        echo "Opción 1: Conexión directa al servidor: Correcta rodolfo rodolfo"
                     } catch (Exception e) {
                         echo "Opción 1: Conexión directa al servidor: Fallida"
                     }
